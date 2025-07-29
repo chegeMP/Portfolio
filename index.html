@@ -1,394 +1,1160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MarkPaul Chege | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #0f0f1a;
+      --bg-tertiary: #141420;
+      --accent-primary: #00f5ff;
+      --accent-secondary: #ff0080;
+      --accent-tertiary: #8000ff;
+      --text-primary: #ffffff;
+      --text-secondary: #b8bcc8;
+      --text-muted: #6b7280;
+      --border-color: #1e1e2e;
+      --gradient-primary: linear-gradient(135deg, #00f5ff, #ff0080);
+      --gradient-secondary: linear-gradient(135deg, #8000ff, #00f5ff);
+      --shadow-glow: 0 0 40px rgba(0, 245, 255, 0.3);
+      --shadow-pink: 0 0 40px rgba(255, 0, 128, 0.3);
+      --shadow-purple: 0 0 40px rgba(128, 0, 255, 0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(128, 0, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -2;
+      animation: backgroundPulse 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundPulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    .particle:nth-child(2n) {
+      background: var(--accent-secondary);
+      animation-duration: 20s;
+    }
+
+    .particle:nth-child(3n) {
+      background: var(--accent-tertiary);
+      animation-duration: 25s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Scroll Progress */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient-primary);
+      transform-origin: left;
+      transform: scaleX(0);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 1rem 0;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.8);
+      border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 10, 15, 0.95);
+      border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      filter: brightness(1.2);
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      border: 2px solid rgba(0, 245, 255, 0.1);
+      border-radius: 50%;
+      animation: rotate 30s linear infinite;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border: 2px solid rgba(255, 0, 128, 0.1);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite reverse;
+    }
+
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      background: var(--gradient-primary);
+      padding: 4px;
+      margin: 0 auto 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.2); }
+    }
+
+    .hero-subtitle {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .typewriter {
+      border-right: 3px solid var(--accent-primary);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { border-color: transparent; }
+      51%, 100% { border-color: var(--accent-primary); }
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-primary);
+      border: 2px solid var(--accent-primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: var(--gradient-secondary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-divider {
+      width: 100px;
+      height: 4px;
+      background: var(--gradient-primary);
+      margin: 0 auto 4rem;
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-content,
+    .about-stats {
+      background: rgba(15, 15, 26, 0.6);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .about-content:hover,
+    .about-stats:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--accent-primary);
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      padding: 0.5rem 1rem;
+      background: rgba(0, 245, 255, 0.1);
+      color: var(--accent-primary);
+      border-radius: 25px;
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      background: rgba(0, 245, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+
+    .stat-item:hover {
+      color: var(--accent-primary);
+      transform: translateX(10px);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(15, 15, 26, 0.6);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--accent-primary);
+    }
+
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .skill-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-list li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+      font-size: 0.8rem;
+    }
+
+    .skill-list li:hover {
+      color: var(--accent-primary);
+      transform: translateX(5px);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(15, 15, 26, 0.6);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--accent-primary);
+    }
+
+    .project-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .project-content {
+      padding: 2.5rem;
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-icon {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tech-tag {
+      padding: 0.3rem 0.8rem;
+      background: rgba(128, 0, 255, 0.1);
+      color: var(--accent-tertiary);
+      border-radius: 15px;
+      border: 1px solid rgba(128, 0, 255, 0.3);
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(128, 0, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .project-link {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      transform: translateX(5px);
+      color: var(--accent-secondary);
+    }
+
+    /* Contact Section */
+    .contact-content {
+      text-align: center;
+      background: rgba(15, 15, 26, 0.6);
+      padding: 4rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-content:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--accent-primary);
+    }
+
+    .contact-description {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-email {
+      background: rgba(0, 245, 255, 0.1);
+      color: var(--accent-primary);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .contact-email:hover {
+      background: rgba(0, 245, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 0, 128, 0.1);
+      color: var(--accent-secondary);
+      border: 1px solid rgba(255, 0, 128, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 0, 128, 0.2);
+      transform: translateY(-3px) rotate(10deg);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .contact-location {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Utility Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
-  
-  <!-- Scroll Progress Indicator -->
-  <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform origin-left scale-x-0 z-50 transition-transform duration-300"></div>
-  
+<body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
   <!-- Floating Particles -->
-  <div class="fixed inset-0 pointer-events-none z-0">
-    <div class="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
-    <div class="absolute w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-ping" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
-    <div class="absolute w-3 h-3 bg-cyan-400 rounded-full opacity-50 animate-bounce" style="top: 60%; left: 5%; animation-delay: 2s;"></div>
-    <div class="absolute w-2 h-2 bg-pink-400 rounded-full opacity-30 animate-pulse" style="bottom: 20%; right: 10%; animation-delay: 3s;"></div>
-  </div>
+  <div class="particles"></div>
 
   <!-- Navigation -->
-  <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 backdrop-blur-md bg-gray-900/70">
-    <div class="max-w-6xl mx-auto px-6 py-4">
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
-          MP
-        </div>
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="hover:text-blue-400 transition-colors duration-300 relative group">
-            Home
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#about" class="hover:text-blue-400 transition-colors duration-300 relative group">
-            About
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#skills" class="hover:text-blue-400 transition-colors duration-300 relative group">
-            Skills
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#projects" class="hover:text-blue-400 transition-colors duration-300 relative group">
-            Projects
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#contact" class="hover:text-blue-400 transition-colors duration-300 relative group">
-            Contact
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        </div>
-        <button class="md:hidden text-2xl hover:text-blue-400 transition-colors" onclick="toggleMobileMenu()">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">MP</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center relative">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div class="w-96 h-96 border border-blue-400/30 rounded-full animate-spin-slow"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-purple-400/20 rounded-full animate-reverse-spin"></div>
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content fade-in">
+      <div class="profile-img">
+        <img src="https://via.placeholder.com/200x200/00f5ff/ffffff?text=MP" alt="MarkPaul Chege">
       </div>
-    </div>
-    
-    <div class="text-center z-10 max-w-4xl mx-auto px-6">
-      <div class="mb-8 transform transition-all duration-1000 hover:scale-105">
-        <img src="https://via.placeholder.com/200x200/3b82f6/ffffff?text=MP" 
-             alt="Profile" 
-             class="rounded-full w-40 h-40 object-cover border-4 border-blue-500 shadow-2xl mx-auto hover:shadow-blue-500/50 transition-all duration-500 hover:rotate-12" />
-      </div>
-      
-      <div class="space-y-6">
-        <h1 class="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
-          MarkPaul Chege
-        </h1>
-        
-        <p class="text-2xl md:text-3xl text-gray-300">
-          <span id="typewriter" class="border-r-2 border-blue-400"></span>
-        </p>
-        
-        <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          Transforming ideas into powerful digital solutions through innovative software development and intelligent data analysis
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-          <a href="#projects" class="group bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-            <i class="fas fa-code mr-2 group-hover:animate-bounce"></i>View My Work
-          </a>
-          <a href="#contact" class="border-2 border-blue-500 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
-            <i class="fas fa-envelope mr-2"></i>Get In Touch
-          </a>
-        </div>
+      <h1 class="hero-title">MarkPaul Chege</h1>
+      <h2 class="hero-subtitle">
+        <span class="typewriter"></span>
+      </h2>
+      <p class="hero-description">
+        Transforming ideas into powerful digital solutions through innovative software development and intelligent data analysis
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-code"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Get In Touch
+        </a>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-        About Me
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
-    </div>
+  <section id="about" class="section fade-in">
+    <h2 class="section-title">About Me</h2>
+    <div class="section-divider"></div>
     
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105">
-        <p class="text-gray-300 leading-relaxed text-lg mb-6">
-          I'm a passionate <span class="text-blue-400 font-semibold">Systems Engineer & Backend Developer</span> 
+    <div class="about-grid">
+      <div class="about-content">
+        <p>
+          I'm a passionate <span class="highlight">Systems Engineer & Backend Developer</span> 
           specializing in building scalable infrastructure and robust backend solutions. My expertise spans across 
           Linux administration, cloud technologies, and modern development frameworks.
         </p>
-        <p class="text-gray-300 leading-relaxed text-lg mb-6">
+        <p>
           With hands-on experience in enterprise environments, I've successfully architected and maintained 
           high-availability systems while developing efficient backend APIs and microservices that power 
           modern applications.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <span class="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm hover:bg-blue-500/30 transition-colors">Systems Engineering</span>
-          <span class="bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm hover:bg-purple-500/30 transition-colors">Backend Development</span>
-          <span class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm hover:bg-cyan-500/30 transition-colors">Cloud Infrastructure</span>
-          <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm hover:bg-green-500/30 transition-colors">DevOps</span>
+        <div class="tags">
+          <span class="tag">Systems Engineering</span>
+          <span class="tag">Backend Development</span>
+          <span class="tag">Cloud Infrastructure</span>
+          <span class="tag">DevOps</span>
         </div>
       </div>
       
-      <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500">
-        <h3 class="text-2xl font-bold mb-6 text-blue-400">Quick Stats</h3>
-        <div class="space-y-6">
-          <div class="flex justify-between items-center group">
-            <span class="group-hover:text-blue-400 transition-colors">Projects Completed</span>
-            <span class="text-3xl font-bold text-blue-400 group-hover:scale-110 transition-transform">15+</span>
-          </div>
-          <div class="flex justify-between items-center group">
-            <span class="group-hover:text-purple-400 transition-colors">Years of Experience</span>
-            <span class="text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">4+</span>
-          </div>
-          <div class="flex justify-between items-center group">
-            <span class="group-hover:text-green-400 transition-colors">Technologies Mastered</span>
-            <span class="text-3xl font-bold text-green-400 group-hover:scale-110 transition-transform">20+</span>
-          </div>
-          <div class="flex justify-between items-center group">
-            <span class="group-hover:text-yellow-400 transition-colors">Coffee Consumed</span>
-            <span class="text-3xl font-bold text-yellow-400 group-hover:scale-110 transition-transform">∞</span>
-          </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span>Projects Completed</span>
+          <span class="stat-value">15+</span>
+        </div>
+        <div class="stat-item">
+          <span>Years of Experience</span>
+          <span class="stat-value">4+</span>
+        </div>
+        <div class="stat-item">
+          <span>Technologies Mastered</span>
+          <span class="stat-value">20+</span>
+        </div>
+        <div class="stat-item">
+          <span>Coffee Consumed</span>
+          <span class="stat-value">∞</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-        Technical Arsenal
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
-    </div>
+  <section id="skills" class="section fade-in">
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="section-divider"></div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group">
-        <div class="text-4xl mb-4 text-blue-400 group-hover:scale-110 transition-transform duration-300">
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">
           <i class="fas fa-server"></i>
         </div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-blue-400 transition-colors">Systems & Infrastructure</h3>
-        <ul class="space-y-2 text-gray-300">
-          <li class="hover:text-blue-400 transition-colors cursor-default">• Linux (Red Hat, CentOS, Ubuntu)</li>
-          <li class="hover:text-blue-400 transition-colors cursor-default">• VMware vSphere & KVM</li>
-          <li class="hover:text-blue-400 transition-colors cursor-default">• Network Management</li>
-          <li class="hover:text-blue-400 transition-colors cursor-default">• Storage Systems (SAN/NAS)</li>
+        <h3 class="skill-title">Systems & Infrastructure</h3>
+        <ul class="skill-list">
+          <li>Linux (Red Hat, CentOS, Ubuntu)</li>
+          <li>VMware vSphere & KVM</li>
+          <li>Network Management</li>
+          <li>Storage Systems (SAN/NAS)</li>
         </ul>
-        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
-          <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
-        </div>
       </div>
 
-      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
-        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 transition-transform duration-300">
+      <div class="skill-card">
+        <div class="skill-icon">
           <i class="fas fa-code"></i>
         </div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-green-400 transition-colors">Backend Development</h3>
-        <ul class="space-y-2 text-gray-300">
-          <li class="hover:text-green-400 transition-colors cursor-default">• Python (Flask, Django, FastAPI)</li>
-          <li class="hover:text-green-400 transition-colors cursor-default">• Java (Play Framework)</li>
-          <li class="hover:text-green-400 transition-colors cursor-default">• RESTful APIs & GraphQL</li>
-          <li class="hover:text-green-400 transition-colors cursor-default">• Microservices Architecture</li>
+        <h3 class="skill-title">Backend Development</h3>
+        <ul class="skill-list">
+          <li>Python (Flask, Django, FastAPI)</li>
+          <li>Java (Play Framework)</li>
+          <li>RESTful APIs & GraphQL</li>
+          <li>Microservices Architecture</li>
         </ul>
-        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
-          <div class="h-full bg-gradient-to-r from-green-400 to-green-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
-        </div>
       </div>
 
-      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 group">
-        <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition-transform duration-300">
+      <div class="skill-card">
+        <div class="skill-icon">
           <i class="fas fa-database"></i>
         </div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Database & Caching</h3>
-        <ul class="space-y-2 text-gray-300">
-          <li class="hover:text-purple-400 transition-colors cursor-default">• PostgreSQL & MySQL</li>
-          <li class="hover:text-purple-400 transition-colors cursor-default">• Redis Caching</li>
-          <li class="hover:text-purple-400 transition-colors cursor-default">• Database Optimization</li>
-          <li class="hover:text-purple-400 transition-colors cursor-default">• ETL Processes</li>
+        <h3 class="skill-title">Database & Caching</h3>
+        <ul class="skill-list">
+          <li>PostgreSQL & MySQL</li>
+          <li>Redis Caching</li>
+          <li>Database Optimization</li>
+          <li>ETL Processes</li>
         </ul>
-        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
-          <div class="h-full bg-gradient-to-r from-purple-400 to-purple-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
-        </div>
       </div>
 
-      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-yellow-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/20 group">
-        <div class="text-4xl mb-4 text-yellow-400 group-hover:scale-110 transition-transform duration-300">
+      <div class="skill-card">
+        <div class="skill-icon">
           <i class="fas fa-tools"></i>
         </div>
-        <h3 class="text-xl font-bold mb-4 group-hover:text-yellow-400 transition-colors">DevOps & Tools</h3>
-        <ul class="space-y-2 text-gray-300">
-          <li class="hover:text-yellow-400 transition-colors cursor-default">• Docker & Containerization</li>
-          <li class="hover:text-yellow-400 transition-colors cursor-default">• Git & Version Control</li>
-          <li class="hover:text-yellow-400 transition-colors cursor-default">• CI/CD Pipelines</li>
-          <li class="hover:text-yellow-400 transition-colors cursor-default">• Monitoring & Logging</li>
+        <h3 class="skill-title">DevOps & Tools</h3>
+        <ul class="skill-list">
+          <li>Docker & Containerization</li>
+          <li>Git & Version Control</li>
+          <li>CI/CD Pipelines</li>
+          <li>Monitoring & Logging</li>
         </ul>
-        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
-          <div class="h-full bg-gradient-to-r from-yellow-400 to-yellow-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-        Featured Projects
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
-    </div>
+  <section id="projects" class="section fade-in">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="section-divider"></div>
     
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
-        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-seedling"></i>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3 class="project-title">Farmfresh</h3>
+          <p class="project-description">
+            A revolutionary platform connecting farmers directly with consumers, eliminating middlemen and ensuring fair pricing for agricultural products.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+          <a href="https://github.com/chegeMP/Farmfresh_1" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-green-400 transition-colors">Farmfresh</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          A revolutionary platform connecting farmers directly with consumers, eliminating middlemen and ensuring fair pricing.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Laravel</span>
-          <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm hover:bg-purple-600/40 transition-colors">PHP</span>
-          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">MySQL</span>
-        </div>
-        <a href="https://github.com/chegeMP/Farmfresh_1" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
 
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group">
-        <div class="text-4xl mb-4 text-blue-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-shield-alt"></i>
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="project-title">Insurance Cost Predictor</h3>
+          <p class="project-description">
+            AI-powered insurance pricing prediction system using advanced machine learning algorithms for accurate cost estimation and risk assessment.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+          </div>
+          <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">Insurance Cost Predictor</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          AI-powered insurance pricing prediction system using machine learning algorithms for accurate cost estimation.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
-          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
-          <span class="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm hover:bg-red-600/40 transition-colors">ML</span>
-        </div>
-        <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
 
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 group">
-        <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-route"></i>
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-route"></i>
+          </div>
+          <h3 class="project-title">Ma3 Transport AI</h3>
+          <p class="project-description">
+            Intelligent public transport optimization system providing best routes and real-time fare information for seamless urban mobility.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">APIs</span>
+          </div>
+          <a href="https://github.com/chegeMP/Ma3" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">Ma3 Transport AI</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          Intelligent public transport optimization system providing best routes and real-time fare information.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Python</span>
-          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">Flask</span>
-          <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm hover:bg-purple-600/40 transition-colors">APIs</span>
-        </div>
-        <a href="https://github.com/chegeMP/Ma3" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
 
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-red-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-red-500/20 group">
-        <div class="text-4xl mb-4 text-red-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-gamepad"></i>
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3 class="project-title">Aviator Crash Game</h3>
+          <p class="project-description">
+            Real-time multiplayer betting game with sophisticated crash prediction algorithms and live multiplier tracking system.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">WebSocket</span>
+          </div>
+          <a href="https://github.com/chegeMP/Aviator-Crash-game" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-red-400 transition-colors">Aviator Crash Game</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          Real-time multiplayer betting game with sophisticated crash prediction algorithms and live multiplier tracking.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
-          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">WebSocket</span>
-        </div>
-        <a href="https://github.com/chegeMP/Aviator-Crash-game" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
 
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 group">
-        <div class="text-4xl mb-4 text-cyan-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-car"></i>
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 class="project-title">Imports by Wam</h3>
+          <p class="project-description">
+            Comprehensive car marketplace mobile application with integrated importer connections and advanced inventory management features.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Spring Boot</span>
+          </div>
+          <a href="#" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">Imports by Wam</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          Comprehensive car marketplace mobile application with integrated importer connections and inventory management.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm hover:bg-orange-600/40 transition-colors">Kotlin</span>
-          <span class="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm hover:bg-red-600/40 transition-colors">Java</span>
-          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">Spring Boot</span>
-        </div>
-        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
 
-      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
-        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-          <i class="fas fa-heartbeat"></i>
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3 class="project-title">Health Management App</h3>
+          <p class="project-description">
+            Comprehensive health platform connecting users with healthcare providers and personalized wellness programs for better health outcomes.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+          <a href="#" class="project-link">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
-        <h3 class="text-2xl font-bold mb-3 group-hover:text-green-400 transition-colors">Health Management App</h3>
-        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
-          Comprehensive health platform connecting users with healthcare providers and personalized wellness programs.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
-          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
-          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">MySQL</span>
-        </div>
-        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
-          <i class="fab fa-github mr-2"></i>View Project
-        </a>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-        Let's Build Something Amazing
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
-    </div>
+  <section id="contact" class="section fade-in">
+    <h2 class="section-title">Let's Build Something Amazing</h2>
+    <div class="section-divider"></div>
     
-    <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500">
-      <p class="text-xl text-gray-300 mb-8 text-center">
-        Ready to collaborate on your next project? I'm always excited to work on innovative solutions!
+    <div class="contact-content">
+      <p class="contact-description">
+        Ready to collaborate on your next project? I'm always excited to work on innovative solutions that make a difference!
       </p>
       
-      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-        <a href="mailto:chegemark582@gmail.com" class="group backdrop-blur-md bg-white/10 px-6 py-3 rounded-full border border-white/20 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-          <i class="fas fa-envelope mr-3 text-blue-400 group-hover:animate-bounce"></i>
-          <span class="group-hover:text-blue-400 transition-colors">chegemark582@gmail.com</span>
+      <div class="contact-links">
+        <a href="mailto:chegemark582@gmail.com" class="contact-email">
+          <i class="fas fa-envelope"></i> chegemark582@gmail.com
         </a>
         
-        <div class="flex gap-4">
-          <a href="https://github.com/chegeMP" class="backdrop-blur-md bg-white/10 p-3 rounded-full border border-white/20 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25 group">
-            <i class="fab fa-github text-xl group-hover:text-purple-400 transition-colors group-hover:animate-pulse"></i>
+        <div class="social-links">
+          <a href="https://github.com/chegeMP" class="social-link">
+            <i class="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/markchege4401/" class="backdrop-blur-md bg-white/10 p-3 rounded-full border border-white/20 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 group">
-            <i class="fab fa-linkedin text-xl group-hover:text-blue-400 transition-colors group-hover:animate-pulse"></i>
+          <a href="https://www.linkedin.com/in/markchege4401/" class="social-link">
+            <i class="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
       
-      <p class="text-gray-400 text-center">
+      <p class="contact-location">
         📍 Nairobi, Kenya | Available for remote and on-site opportunities
       </p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 text-center text-sm text-gray-500 border-t border-gray-800">
-    <p class="hover:text-gray-300 transition-colors">© 2025 MarkPaul Chege. Crafted with ❤️ and lots of ☕</p>
+  <footer class="footer">
+    <p>© 2025 MarkPaul Chege. Crafted with ❤️ and lots of ☕</p>
   </footer>
 
   <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
     // Typewriter effect
     const phrases = [
       "Systems Engineer",
@@ -401,7 +1167,7 @@
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typewriterElement = document.getElementById('typewriter');
+    const typewriterElement = document.querySelector('.typewriter');
     
     function typeWriter() {
       const currentPhrase = phrases[phraseIndex];
@@ -425,178 +1191,92 @@
       setTimeout(typeWriter, speed);
     }
     
-    // Start typewriter effect
-    setTimeout(typeWriter, 1000);
-    
     // Scroll progress indicator
-    window.addEventListener('scroll', () => {
-      const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+      const scrollProgress = document.querySelector('.scroll-progress');
       const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
       scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-    
-    // Navbar background on scroll
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(17, 24, 39, 0.95)';
-        navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.2)';
-      } else {
-        navbar.style.background = 'rgba(17, 24, 39, 0.7)';
-        navbar.style.borderBottom = 'none';
-      }
-    });
-    
-    // Add intersection observer for scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-        }
-      });
-    }, observerOptions);
-    
-    // Observe sections for animations
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-    
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const hero = document.getElementById('home');
-      if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
-    });
-    
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      // Add mobile menu functionality here
-      console.log('Mobile menu toggled');
     }
     
-    // Add custom animations
-    const style = document.createElement('style');
-    style.textContent = `
-      .animate-spin-slow {
-        animation: spin 20s linear infinite;
+    // Navbar scroll effect
+    function updateNavbar() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
-      
-      .animate-reverse-spin {
-        animation: spin 15s linear infinite reverse;
-      }
-      
-      .animate-fade-in {
-        animation: fadeIn 1s ease-out;
-      }
-      
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      
-      @keyframes fadeIn {
-        from { 
-          opacity: 0; 
-          transform: translateY(30px); 
-        }
-        to { 
-          opacity: 1; 
-          transform: translateY(0); 
-        }
-      }
-      
-      /* Custom scroll bar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: rgba(17, 24, 39, 0.8);
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-        border-radius: 4px;
-      }
-      
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(to bottom, #2563eb, #7c3aed);
-      }
-      
-      /* Smooth transitions for all elements */
-      * {
-        transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      
-      /* Glowing effect on focus */
-      *:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-      }
-    `;
-    document.head.appendChild(style);
+    }
     
-    // Add loading animation
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
-    
-    // Add cursor trail effect
-    document.addEventListener('mousemove', (e) => {
-      const cursor = document.createElement('div');
-      cursor.className = 'cursor-trail';
-      cursor.style.cssText = `
-        position: fixed;
-        left: ${e.clientX}px;
-        top: ${e.clientY}px;
-        width: 4px;
-        height: 4px;
-        background: rgba(59, 130, 246, 0.6);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        animation: cursorFade 1s ease-out forwards;
-      `;
+    // Fade in animation on scroll
+    function handleScrollAnimation() {
+      const elements = document.querySelectorAll('.fade-in');
       
-      document.body.appendChild(cursor);
-      
-      setTimeout(() => {
-        cursor.remove();
-      }, 1000);
-    });
-    
-    // Add cursor fade animation
-    const cursorStyle = document.createElement('style');
-    cursorStyle.textContent = `
-      @keyframes cursorFade {
-        to {
-          opacity: 0;
-          transform: scale(3);
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
         }
+      });
+    }
+    
+    // Smooth scrolling for navigation links
+    function initSmoothScrolling() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    }
+    
+    // Parallax effect for hero section
+    function handleParallax() {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      const heroContent = document.querySelector('.hero-content');
+      
+      if (hero && scrolled < window.innerHeight) {
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
       }
-    `;
-    document.head.appendChild(cursorStyle);
+    }
+    
+    // Initialize everything
+    function init() {
+      createParticles();
+      setTimeout(typeWriter, 1000);
+      initSmoothScrolling();
+      
+      // Initial check for fade-in elements
+      handleScrollAnimation();
+      
+      // Event listeners
+      window.addEventListener('scroll', () => {
+        updateScrollProgress();
+        updateNavbar();
+        handleScrollAnimation();
+        handleParallax();
+      });
+      
+      window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+      });
+    }
+    
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
 </body>
 </html>
