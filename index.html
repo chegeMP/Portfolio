@@ -5,128 +5,598 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MarkPaul Chege | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
+  
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollProgress" class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform origin-left scale-x-0 z-50 transition-transform duration-300"></div>
+  
+  <!-- Floating Particles -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="absolute w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-ping" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+    <div class="absolute w-3 h-3 bg-cyan-400 rounded-full opacity-50 animate-bounce" style="top: 60%; left: 5%; animation-delay: 2s;"></div>
+    <div class="absolute w-2 h-2 bg-pink-400 rounded-full opacity-30 animate-pulse" style="bottom: 20%; right: 10%; animation-delay: 3s;"></div>
+  </div>
 
- 
-  <header class="bg-gray-800 py-10 px-6 md:px-20">
-    <div class="flex flex-col md:flex-row items-center md:items-start md:justify-between max-w-6xl mx-auto">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 backdrop-blur-md bg-gray-900/70">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+          MP
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="hover:text-blue-400 transition-colors duration-300 relative group">
+            Home
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#about" class="hover:text-blue-400 transition-colors duration-300 relative group">
+            About
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#skills" class="hover:text-blue-400 transition-colors duration-300 relative group">
+            Skills
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#projects" class="hover:text-blue-400 transition-colors duration-300 relative group">
+            Projects
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#contact" class="hover:text-blue-400 transition-colors duration-300 relative group">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
+        <button class="md:hidden text-2xl hover:text-blue-400 transition-colors" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="w-96 h-96 border border-blue-400/30 rounded-full animate-spin-slow"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-purple-400/20 rounded-full animate-reverse-spin"></div>
+      </div>
+    </div>
+    
+    <div class="text-center z-10 max-w-4xl mx-auto px-6">
+      <div class="mb-8 transform transition-all duration-1000 hover:scale-105">
+        <img src="https://via.placeholder.com/200x200/3b82f6/ffffff?text=MP" 
+             alt="Profile" 
+             class="rounded-full w-40 h-40 object-cover border-4 border-blue-500 shadow-2xl mx-auto hover:shadow-blue-500/50 transition-all duration-500 hover:rotate-12" />
+      </div>
       
-      <div class="mb-6 md:mb-0">
-        <img src="assets/Passport_Photo.jpg" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-blue-500 shadow-lg" />
-      </div>
-      <!-- Info -->
-      <div class="text-center md:text-center md:ml-6">
-        <h1 class="text-4xl font-bold">MarkPaul Chege</h1>
-        <p class="text-lg mt-1 text-gray-300">Software Developer & Data Analyst</p>
-        <p class="text-sm mt-1 text-gray-400">📍 Nairobi, Kenya | 📧 chegemark582@gmail.com</p>
-      </div>
-    </div>
-  </header>
-
-  <!-- About Me -->
-  <section class="p-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-semibold mb-4 text-blue-400">About Me</h2>
-    <p class="text-gray-300 leading-relaxed">
-      I'm a passionate software developer and data analyst skilled in turning raw data into actionable insights and crafting full-stack applications. I specialize in Power BI, Python, and SQL to build tools that help businesses make smarter decisions. I thrive in collaborative environments and am always eager to learn new technologies. My goal is to leverage my skills to create impactful solutions that drive efficiency and innovation. I am currently seeking opportunities to further develop my skills and contribute to exciting projects. I am particularly interested in roles that allow me to work with data visualization, machine learning, and web development. I am also open to internships and entry-level positions that will help me grow in my career. I am a quick learner and am always looking for ways to improve my skills and knowledge. I am excited about the future of technology and the impact it can have on our lives. I believe that with hard work and dedication, I can make a positive contribution to the field of software development and data analysis.
-    </p>
-  </section>
-
-  <!-- Skills -->
-  <section class="p-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-semibold mb-4 text-blue-400">Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-gray-300">
-      <div>
-        <h3 class="font-semibold mb-2 text-white">Programming</h3>
-        <ul class="space-y-1"><li>Python</li><li>SQL</li><li>PHP</li></ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-2 text-white">Data Tools</h3>
-        <ul class="space-y-1"><li>Power BI</li><li>Pandas</li><li>Excel</li></ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-2 text-white">Frameworks</h3>
-        <ul class="space-y-1"><li>Laravel</li><li>React</li><li>Flask</li></ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-2 text-white">Others</h3>
-        <ul class="space-y-1"><li>Git</li><li>Dockers</li><li>APIs</li></ul>
+      <div class="space-y-6">
+        <h1 class="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+          MarkPaul Chege
+        </h1>
+        
+        <p class="text-2xl md:text-3xl text-gray-300">
+          <span id="typewriter" class="border-r-2 border-blue-400"></span>
+        </p>
+        
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          Transforming ideas into powerful digital solutions through innovative software development and intelligent data analysis
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <a href="#projects" class="group bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+            <i class="fas fa-code mr-2 group-hover:animate-bounce"></i>View My Work
+          </a>
+          <a href="#contact" class="border-2 border-blue-500 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+            <i class="fas fa-envelope mr-2"></i>Get In Touch
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section class="p-6 max-w-6xl mx-auto">
-    <h2 class="text-2xl font-semibold mb-6 text-blue-400">Projects</h2>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Project Card -->
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Farmfresh</h3>
-        <p class="text-gray-400 mt-1">Connects farmers directly with consumers to eliminate middlemen.</p>
-        <p class="text-xs mt-2 text-gray-500">Laravel, PHP, MySQL</p>
-        <a href="https://github.com/chegeMP/Farmfresh_1" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+        About Me
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105">
+        <p class="text-gray-300 leading-relaxed text-lg mb-6">
+          I'm a passionate <span class="text-blue-400 font-semibold">Systems Engineer & Backend Developer</span> 
+          specializing in building scalable infrastructure and robust backend solutions. My expertise spans across 
+          Linux administration, cloud technologies, and modern development frameworks.
+        </p>
+        <p class="text-gray-300 leading-relaxed text-lg mb-6">
+          With hands-on experience in enterprise environments, I've successfully architected and maintained 
+          high-availability systems while developing efficient backend APIs and microservices that power 
+          modern applications.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm hover:bg-blue-500/30 transition-colors">Systems Engineering</span>
+          <span class="bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm hover:bg-purple-500/30 transition-colors">Backend Development</span>
+          <span class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm hover:bg-cyan-500/30 transition-colors">Cloud Infrastructure</span>
+          <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm hover:bg-green-500/30 transition-colors">DevOps</span>
+        </div>
       </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Insurance Cost Predictor</h3>
-        <p class="text-gray-400 mt-1">Predicts insurance pricing based on personal data and location.</p>
-        <p class="text-xs mt-2 text-gray-500">Flask, Python, HTML</p>
-        <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Aviator Crash Game</h3>
-        <p class="text-gray-400 mt-1">Stake-and-multiply betting game logic simulation.</p>
-        <p class="text-xs mt-2 text-gray-500">Python, Flask</p>
-        <a href="https://github.com/chegeMP/Aviator-Crash-game" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Ma3</h3>
-        <p class="text-gray-400 mt-1">AI tool for best public transport route and fare.</p>
-        <p class="text-xs mt-2 text-gray-500">Python, Flask, APIs</p>
-        <a href="https://github.com/chegeMP/Ma3" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">To-Do-App</h3>
-        <p class="text-gray-400 mt-1">Basic task manager with AI-powered recommendations.</p>
-        <p class="text-xs mt-2 text-gray-500">Python, Flask, APIs</p>
-        <a href="https://github.com/chegeMP/To-Do-App" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Imports by Wam</h3>
-        <p class="text-gray-400 mt-1">Car marketplace mobile app with importer integrations.</p>
-        <p class="text-xs mt-2 text-gray-500">Kotlin, Java, Springboot</p>
-        <a href="https://github.com/chegeMP/To-Do-App" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
-      </div>
-
-      <div class="bg-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-white">Health App</h3>
-        <p class="text-gray-400 mt-1">Enrolls users into doctor-managed health programs.</p>
-        <p class="text-xs mt-2 text-gray-500">Flask, Python, MySQL</p>
-        <a href="https://github.com/chegeMP/To-Do-App" class="text-blue-400 text-sm hover:underline">View on GitHub</a>
+      
+      <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500">
+        <h3 class="text-2xl font-bold mb-6 text-blue-400">Quick Stats</h3>
+        <div class="space-y-6">
+          <div class="flex justify-between items-center group">
+            <span class="group-hover:text-blue-400 transition-colors">Projects Completed</span>
+            <span class="text-3xl font-bold text-blue-400 group-hover:scale-110 transition-transform">15+</span>
+          </div>
+          <div class="flex justify-between items-center group">
+            <span class="group-hover:text-purple-400 transition-colors">Years of Experience</span>
+            <span class="text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">4+</span>
+          </div>
+          <div class="flex justify-between items-center group">
+            <span class="group-hover:text-green-400 transition-colors">Technologies Mastered</span>
+            <span class="text-3xl font-bold text-green-400 group-hover:scale-110 transition-transform">20+</span>
+          </div>
+          <div class="flex justify-between items-center group">
+            <span class="group-hover:text-yellow-400 transition-colors">Coffee Consumed</span>
+            <span class="text-3xl font-bold text-yellow-400 group-hover:scale-110 transition-transform">∞</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
-  <section class="p-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-semibold mb-4 text-blue-400">Education & Certifications</h2>
-    <ul class="list-disc list-inside text-gray-300 space-y-2">
-      <li>BSc in Computer Science – Kabarak University, 2025</li>
-      <li>Microsoft Certified: Power BI Data Analyst Associate</li>
-    </ul>
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+        Technical Arsenal
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group">
+        <div class="text-4xl mb-4 text-blue-400 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-server"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-blue-400 transition-colors">Systems & Infrastructure</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li class="hover:text-blue-400 transition-colors cursor-default">• Linux (Red Hat, CentOS, Ubuntu)</li>
+          <li class="hover:text-blue-400 transition-colors cursor-default">• VMware vSphere & KVM</li>
+          <li class="hover:text-blue-400 transition-colors cursor-default">• Network Management</li>
+          <li class="hover:text-blue-400 transition-colors cursor-default">• Storage Systems (SAN/NAS)</li>
+        </ul>
+        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
+        </div>
+      </div>
+
+      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
+        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-green-400 transition-colors">Backend Development</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li class="hover:text-green-400 transition-colors cursor-default">• Python (Flask, Django, FastAPI)</li>
+          <li class="hover:text-green-400 transition-colors cursor-default">• Java (Play Framework)</li>
+          <li class="hover:text-green-400 transition-colors cursor-default">• RESTful APIs & GraphQL</li>
+          <li class="hover:text-green-400 transition-colors cursor-default">• Microservices Architecture</li>
+        </ul>
+        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-green-400 to-green-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
+        </div>
+      </div>
+
+      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 group">
+        <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-database"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Database & Caching</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li class="hover:text-purple-400 transition-colors cursor-default">• PostgreSQL & MySQL</li>
+          <li class="hover:text-purple-400 transition-colors cursor-default">• Redis Caching</li>
+          <li class="hover:text-purple-400 transition-colors cursor-default">• Database Optimization</li>
+          <li class="hover:text-purple-400 transition-colors cursor-default">• ETL Processes</li>
+        </ul>
+        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-purple-400 to-purple-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
+        </div>
+      </div>
+
+      <div class="backdrop-blur-md bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-yellow-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/20 group">
+        <div class="text-4xl mb-4 text-yellow-400 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 group-hover:text-yellow-400 transition-colors">DevOps & Tools</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li class="hover:text-yellow-400 transition-colors cursor-default">• Docker & Containerization</li>
+          <li class="hover:text-yellow-400 transition-colors cursor-default">• Git & Version Control</li>
+          <li class="hover:text-yellow-400 transition-colors cursor-default">• CI/CD Pipelines</li>
+          <li class="hover:text-yellow-400 transition-colors cursor-default">• Monitoring & Logging</li>
+        </ul>
+        <div class="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-yellow-400 to-yellow-600 transform origin-left transition-transform duration-1000 hover:scale-x-100"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+        Featured Projects
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
+    </div>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
+        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-green-400 transition-colors">Farmfresh</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          A revolutionary platform connecting farmers directly with consumers, eliminating middlemen and ensuring fair pricing.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Laravel</span>
+          <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm hover:bg-purple-600/40 transition-colors">PHP</span>
+          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">MySQL</span>
+        </div>
+        <a href="https://github.com/chegeMP/Farmfresh_1" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 group">
+        <div class="text-4xl mb-4 text-blue-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">Insurance Cost Predictor</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          AI-powered insurance pricing prediction system using machine learning algorithms for accurate cost estimation.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
+          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
+          <span class="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm hover:bg-red-600/40 transition-colors">ML</span>
+        </div>
+        <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 group">
+        <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">Ma3 Transport AI</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          Intelligent public transport optimization system providing best routes and real-time fare information.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Python</span>
+          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">Flask</span>
+          <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm hover:bg-purple-600/40 transition-colors">APIs</span>
+        </div>
+        <a href="https://github.com/chegeMP/Ma3" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-red-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-red-500/20 group">
+        <div class="text-4xl mb-4 text-red-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-red-400 transition-colors">Aviator Crash Game</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          Real-time multiplayer betting game with sophisticated crash prediction algorithms and live multiplier tracking.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
+          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">WebSocket</span>
+        </div>
+        <a href="https://github.com/chegeMP/Aviator-Crash-game" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 group">
+        <div class="text-4xl mb-4 text-cyan-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-car"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">Imports by Wam</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          Comprehensive car marketplace mobile application with integrated importer connections and inventory management.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-orange-600/20 text-orange-400 px-3 py-1 rounded-full text-sm hover:bg-orange-600/40 transition-colors">Kotlin</span>
+          <span class="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm hover:bg-red-600/40 transition-colors">Java</span>
+          <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm hover:bg-green-600/40 transition-colors">Spring Boot</span>
+        </div>
+        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+
+      <div class="backdrop-blur-md bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 group">
+        <div class="text-4xl mb-4 text-green-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <i class="fas fa-heartbeat"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3 group-hover:text-green-400 transition-colors">Health Management App</h3>
+        <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
+          Comprehensive health platform connecting users with healthcare providers and personalized wellness programs.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">Flask</span>
+          <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm hover:bg-yellow-600/40 transition-colors">Python</span>
+          <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm hover:bg-blue-600/40 transition-colors">MySQL</span>
+        </div>
+        <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center group-hover:translate-x-2 transition-transform">
+          <i class="fab fa-github mr-2"></i>View Project
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+        Let's Build Something Amazing
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4"></div>
+    </div>
+    
+    <div class="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-500">
+      <p class="text-xl text-gray-300 mb-8 text-center">
+        Ready to collaborate on your next project? I'm always excited to work on innovative solutions!
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+        <a href="mailto:chegemark582@gmail.com" class="group backdrop-blur-md bg-white/10 px-6 py-3 rounded-full border border-white/20 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+          <i class="fas fa-envelope mr-3 text-blue-400 group-hover:animate-bounce"></i>
+          <span class="group-hover:text-blue-400 transition-colors">chegemark582@gmail.com</span>
+        </a>
+        
+        <div class="flex gap-4">
+          <a href="https://github.com/chegeMP" class="backdrop-blur-md bg-white/10 p-3 rounded-full border border-white/20 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25 group">
+            <i class="fab fa-github text-xl group-hover:text-purple-400 transition-colors group-hover:animate-pulse"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/markchege4401/" class="backdrop-blur-md bg-white/10 p-3 rounded-full border border-white/20 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 group">
+            <i class="fab fa-linkedin text-xl group-hover:text-blue-400 transition-colors group-hover:animate-pulse"></i>
+          </a>
+        </div>
+      </div>
+      
+      <p class="text-gray-400 text-center">
+        📍 Nairobi, Kenya | Available for remote and on-site opportunities
+      </p>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="p-6 text-center text-sm text-gray-500">
-   <br> © 2025 MarkPaul Chege. | All rights reserved. </br>
-    <a href="mailto:chegemark582@gmail.com" class="text-blue-400 hover:underline">Email</a> · 
-    <a href="https://github.com/chegeMP" class="hover:underline">GitHub</a> · 
-    <a href="https://www.linkedin.com/in/markchege4401/" class="hover:underline">LinkedIn</a>
+  <footer class="py-8 text-center text-sm text-gray-500 border-t border-gray-800">
+    <p class="hover:text-gray-300 transition-colors">© 2025 MarkPaul Chege. Crafted with ❤️ and lots of ☕</p>
   </footer>
 
+  <script>
+    // Typewriter effect
+    const phrases = [
+      "Systems Engineer",
+      "Backend Developer", 
+      "Cloud Architect",
+      "DevOps Engineer",
+      "Problem Solver"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterElement = document.getElementById('typewriter');
+    
+    function typeWriter() {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        setTimeout(() => isDeleting = true, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+      
+      const speed = isDeleting ? 50 : 100;
+      setTimeout(typeWriter, speed);
+    }
+    
+    // Start typewriter effect
+    setTimeout(typeWriter, 1000);
+    
+    // Scroll progress indicator
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(17, 24, 39, 0.95)';
+        navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.2)';
+      } else {
+        navbar.style.background = 'rgba(17, 24, 39, 0.7)';
+        navbar.style.borderBottom = 'none';
+      }
+    });
+    
+    // Add intersection observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe sections for animations
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.getElementById('home');
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+    
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      // Add mobile menu functionality here
+      console.log('Mobile menu toggled');
+    }
+    
+    // Add custom animations
+    const style = document.createElement('style');
+    style.textContent = `
+      .animate-spin-slow {
+        animation: spin 20s linear infinite;
+      }
+      
+      .animate-reverse-spin {
+        animation: spin 15s linear infinite reverse;
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out;
+      }
+      
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      @keyframes fadeIn {
+        from { 
+          opacity: 0; 
+          transform: translateY(30px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      
+      /* Custom scroll bar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: rgba(17, 24, 39, 0.8);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, #2563eb, #7c3aed);
+      }
+      
+      /* Smooth transitions for all elements */
+      * {
+        transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      /* Glowing effect on focus */
+      *:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    
+    // Add cursor trail effect
+    document.addEventListener('mousemove', (e) => {
+      const cursor = document.createElement('div');
+      cursor.className = 'cursor-trail';
+      cursor.style.cssText = `
+        position: fixed;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        width: 4px;
+        height: 4px;
+        background: rgba(59, 130, 246, 0.6);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        animation: cursorFade 1s ease-out forwards;
+      `;
+      
+      document.body.appendChild(cursor);
+      
+      setTimeout(() => {
+        cursor.remove();
+      }, 1000);
+    });
+    
+    // Add cursor fade animation
+    const cursorStyle = document.createElement('style');
+    cursorStyle.textContent = `
+      @keyframes cursorFade {
+        to {
+          opacity: 0;
+          transform: scale(3);
+        }
+      }
+    `;
+    document.head.appendChild(cursorStyle);
+  </script>
 </body>
 </html>
