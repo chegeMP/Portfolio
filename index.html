@@ -3,467 +3,563 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarkPaul Chege | Portfolio</title>
+  <meta name="description" content="MarkPaul Chege — data scientist focused on AI, machine learning, and analytics dashboards. Nairobi, Kenya.">
+  <title>MarkPaul Chege | Data Science &amp; ML</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Scroll Progress -->
-  <div class="scroll-progress"></div>
-
-  <!-- Floating Particles -->
-  <div class="particles"></div>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">MP</a>
-      <ul class="nav-links">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="nav-shell" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#home" data-nav-link>Home</a></li>
+          <li><a href="#services" data-nav-link>Services</a></li>
+          <li><a href="#about" data-nav-link>About</a></li>
+          <li><a href="#skills" data-nav-link>Skills</a></li>
+          <li><a href="#projects" data-nav-link>Projects</a></li>
+          <li><a href="#dashboards" data-nav-link>Dashboards</a></li>
+          <li><a href="#performance" data-nav-link>Performance</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-outline header-cta">Let's Talk</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="sr-only">Menu</span>
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-links">
         <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
+        <li><a href="#performance">Performance</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="mobile-menu">
-        <i class="fas fa-bars"></i>
-      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content fade-in">
-      <div class="profile-img">
-        <img src="https://via.placeholder.com/200x200/00f5ff/ffffff?text=MP" alt="MarkPaul Chege">
-      </div>
-      <h1 class="hero-title">MarkPaul Chege</h1>
-      <h2 class="hero-subtitle">
-        <span class="typewriter"></span>
-      </h2>
-      <p class="hero-description">
-        Transforming ideas into powerful digital solutions through innovative software development and intelligent data analysis
-      </p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">
-          <i class="fas fa-code"></i> View My Work
-        </a>
-        <a href="#contact" class="btn btn-secondary">
-          <i class="fas fa-envelope"></i> Get In Touch
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section fade-in">
-    <h2 class="section-title">About Me</h2>
-    <div class="section-divider"></div>
-    
-    <div class="about-grid">
-      <div class="about-content">
-        <p>
-          I'm a passionate <span class="highlight">Systems Engineer & Backend Developer</span> 
-          specializing in building scalable infrastructure and robust backend solutions. My expertise spans across 
-          Linux administration, cloud technologies, and modern development frameworks.
+  <main id="main">
+    <section id="home" class="hero section-block">
+      <div class="hero-layout">
+        <p class="eyebrow">I am MarkPaul Chege</p>
+        <h1 class="hero-title">Data Science, <span class="hero-title-accent">AI</span> &amp; Machine Learning</h1>
+        <p class="hero-lead">
+          I build end-to-end data workflows from exploratory analysis and reproducible modeling to AI-powered insights, prediction systems, and dashboard-ready decision support.
         </p>
-        <p>
-          With hands-on experience in enterprise environments, I've successfully architected and maintained 
-          high-availability systems while developing efficient backend APIs and microservices that power 
-          modern applications.
-        </p>
-        <div class="tags">
-          <span class="tag">Systems Engineering</span>
-          <span class="tag">Backend Development</span>
-          <span class="tag">Cloud Infrastructure</span>
-          <span class="tag">DevOps</span>
+        <ul class="hero-highlights" aria-label="Focus areas">
+          <li>Predictive modeling &amp; evaluation</li>
+          <li>Data pipelines &amp; experimentation</li>
+          <li>Interactive dashboards &amp; reporting</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="mailto:chegemark582@gmail.com?subject=CV%20request" class="btn btn-solid">Download CV</a>
+          <a href="#projects" class="btn btn-outline">See projects</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/markchege4401/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/chegeMP" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
       </div>
-      
-      <div class="about-stats">
-        <div class="stat-item">
-          <span>Projects Completed</span>
+    </section>
+
+    <section id="services" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Services</h2>
+        <p class="section-sub">End-to-end data science and AI services from business framing and dataset design to model validation, deployment readiness, and insight communication.</p>
+      </header>
+      <div class="cards-row cards-row-4">
+        <article class="surface-card">
+          <h3 class="card-title">Data Science &amp; Machine Learning</h3>
+          <p class="card-text">Problem framing, exploratory analysis, feature engineering, baseline-to-advanced supervised modeling, and robust validation design to ensure reliable, evidence-backed decisions.</p>
+          <div class="card-tags">
+            <span class="chip">Modeling</span>
+            <span class="chip">Evaluation</span>
+            <span class="chip">Feature engineering</span>
+          </div>
+        </article>
+        <article class="surface-card">
+          <h3 class="card-title">ML &amp; Analytics Engineering</h3>
+          <p class="card-text">Reusable notebooks and scripts, reproducible training pipelines, metric tracking, and documentation-first handoffs that make model workflows easy to maintain and audit.</p>
+          <div class="card-tags">
+            <span class="chip">Pipelines</span>
+            <span class="chip">Reproducibility</span>
+            <span class="chip">Experiment tracking</span>
+          </div>
+        </article>
+        <article class="surface-card">
+          <h3 class="card-title">AI Solutions &amp; Forecasting</h3>
+          <p class="card-text">Designing predictive and AI-assisted systems for classification, churn/risk detection, time-series forecasting, and recommendation-style decision support use cases.</p>
+          <div class="card-tags">
+            <span class="chip">Forecasting</span>
+            <span class="chip">AI use cases</span>
+            <span class="chip">Prediction systems</span>
+          </div>
+        </article>
+        <article class="surface-card">
+          <h3 class="card-title">Dashboards &amp; BI Reporting</h3>
+          <p class="card-text">Building KPI-first dashboards for operations, finance, and product teams to track trends, segment behavior, and performance drift with clear business context.</p>
+          <div class="card-tags">
+            <span class="chip">Power BI / Tableau</span>
+            <span class="chip">Storytelling</span>
+            <span class="chip">KPI design</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub wide">
+          I'm a data scientist focused on <strong>AI and machine learning</strong>. I hold a <strong>Bachelor's degree in Computer Science from Kabarak University</strong>, with Python certifications and ongoing certifications in data science, AI, and machine learning.
+        </p>
+        <p class="section-sub wide">
+          Over <strong>1+ year</strong>, I have built practical projects in predictive modeling, dashboard analytics, and model performance evaluation with a focus on clarity, business relevance, and measurable outcomes.
+        </p>
+      </header>
+      <h3 class="subsection-label">My approach</h3>
+      <div class="cards-row cards-row-3">
+        <article class="approach-card">
+          <span class="approach-num">01</span>
+          <h4 class="approach-title">Understand the data &amp; objective</h4>
+          <p class="approach-text">Define the prediction or decision surface, leakage risks, constraints, and the metric that actually matters.</p>
+        </article>
+        <article class="approach-card">
+          <span class="approach-num">02</span>
+          <h4 class="approach-title">Iterate with discipline</h4>
+          <p class="approach-text">Bias–variance intuition, sober baselines, and validation you trust before scaling complexity.</p>
+        </article>
+        <article class="approach-card">
+          <span class="approach-num">03</span>
+          <h4 class="approach-title">Ship &amp; integrate</h4>
+          <p class="approach-text">Package artifacts for engineering handoff, expose APIs thoughtfully, and keep operations observable.</p>
+        </article>
+      </div>
+      <div class="stats-row">
+        <div class="stat-block">
+          <span class="stat-value">1+</span>
+          <span class="stat-label">Years of experience</span>
+        </div>
+        <div class="stat-block">
           <span class="stat-value">15+</span>
+          <span class="stat-label">Projects completed</span>
         </div>
-        <div class="stat-item">
-          <span>Years of Experience</span>
-          <span class="stat-value">4+</span>
-        </div>
-        <div class="stat-item">
-          <span>Technologies Mastered</span>
+        <div class="stat-block">
           <span class="stat-value">20+</span>
-        </div>
-        <div class="stat-item">
-          <span>Coffee Consumed</span>
-          <span class="stat-value">∞</span>
+          <span class="stat-label">Tools &amp; stack components</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section fade-in">
-    <h2 class="section-title">Technical Arsenal</h2>
-    <div class="section-divider"></div>
-    
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fas fa-server"></i>
-        </div>
-        <h3 class="skill-title">Systems & Infrastructure</h3>
-        <ul class="skill-list">
-          <li>Linux (Red Hat, CentOS, Ubuntu)</li>
-          <li>VMware vSphere & KVM</li>
-          <li>Network Management</li>
-          <li>Storage Systems (SAN/NAS)</li>
-        </ul>
+    <section id="skills" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">Data science, AI, and machine learning skills for analysis, modeling, and decision intelligence.</p>
+      </header>
+      <div class="cards-row cards-row-4">
+        <article class="surface-card skill-bucket skill-bucket--primary">
+          <h3 class="card-title">Data science &amp; machine learning</h3>
+          <div class="chip-wrap">
+            <span class="chip">Python</span>
+            <span class="chip">pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">Matplotlib</span>
+            <span class="chip">Seaborn</span>
+            <span class="chip">Supervised learning</span>
+            <span class="chip">Classification &amp; regression</span>
+            <span class="chip">Model evaluation</span>
+            <span class="chip">Cross-validation</span>
+            <span class="chip">Feature engineering</span>
+            <span class="chip">EDA &amp; visualization</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">XGBoost / ensembles</span>
+            <span class="chip">Statistical thinking</span>
+            <span class="chip">Model explainability</span>
+          </div>
+        </article>
+        <article class="surface-card skill-bucket">
+          <h3 class="card-title">Data analysis workflow</h3>
+          <div class="chip-wrap">
+            <span class="chip">Jupyter</span>
+            <span class="chip">Data cleaning</span>
+            <span class="chip">Data preprocessing</span>
+            <span class="chip">Exploratory analysis</span>
+            <span class="chip">Visualization design</span>
+            <span class="chip">Model experimentation</span>
+            <span class="chip">Notebook workflows</span>
+            <span class="chip">Hypothesis testing</span>
+            <span class="chip">Error analysis</span>
+          </div>
+        </article>
+        <article class="surface-card skill-bucket">
+          <h3 class="card-title">Data stores &amp; engineering</h3>
+          <div class="chip-wrap">
+            <span class="chip">SQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">ETL-style workflows</span>
+            <span class="chip">Dashboard data modeling</span>
+            <span class="chip">Data warehousing concepts</span>
+            <span class="chip">Data quality checks</span>
+            <span class="chip">Pipeline automation</span>
+          </div>
+        </article>
+        <article class="surface-card skill-bucket">
+          <h3 class="card-title">ML operations &amp; visualization</h3>
+          <div class="chip-wrap">
+            <span class="chip">Apache Superset</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Dashboard storytelling</span>
+            <span class="chip">KPI reporting</span>
+            <span class="chip">Model tracking</span>
+            <span class="chip">MLOps fundamentals</span>
+            <span class="chip">Model deployment basics</span>
+            <span class="chip">Monitoring &amp; drift checks</span>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3 class="skill-title">Backend Development</h3>
-        <ul class="skill-list">
-          <li>Python (Flask, Django, FastAPI)</li>
-          <li>Java (Play Framework)</li>
-          <li>RESTful APIs & GraphQL</li>
-          <li>Microservices Architecture</li>
-        </ul>
+    <section id="projects" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">Applied machine learning and AI case projects demonstrating problem definition, feature strategy, model selection, and decision-focused outputs.</p>
+      </header>
+      <div class="filter-bar" role="toolbar" aria-label="Filter projects">
+        <button type="button" class="filter-chip is-active" data-project-filter="all">All</button>
+        <button type="button" class="filter-chip" data-project-filter="ml">Machine learning</button>
+        <button type="button" class="filter-chip" data-project-filter="ai">AI</button>
+        <button type="button" class="filter-chip" data-project-filter="dashboard">Dashboards</button>
       </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fas fa-database"></i>
-        </div>
-        <h3 class="skill-title">Database & Caching</h3>
-        <ul class="skill-list">
-          <li>PostgreSQL & MySQL</li>
-          <li>Redis Caching</li>
-          <li>Database Optimization</li>
-          <li>ETL Processes</li>
-        </ul>
+      <div class="projects-grid">
+        <article class="surface-card project-card" data-project-tags="ai ml dashboard">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></div>
+          <h3 class="card-title">ETL Pipeline for Analytics &amp; ML</h3>
+          <p class="card-text">Production-style ETL workflow for extracting raw operational data, applying validation and transformations, and loading analysis-ready datasets for dashboards and machine learning tasks.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">ETL</span>
+            <span class="chip">Data quality checks</span>
+          </div>
+          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="ml ai">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-user-minus"></i></div>
+          <h3 class="card-title">Customer Churn Prediction Model</h3>
+          <p class="card-text">End-to-end churn prediction workflow using feature engineering, class balancing, and model comparison (Neural Network vs XGBoost) to identify high-risk customers and support retention strategy.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">XGBoost</span>
+            <span class="chip">Neural network</span>
+            <span class="chip">ROC-AUC / F1</span>
+          </div>
+          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="ml ai">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="card-title">Insurance Cost Predictor</h3>
+          <p class="card-text">Machine learning pipeline for insurance pricing estimation using demographic and risk features, with emphasis on generalization, model calibration, and interpretable cost drivers.</p>
+          <div class="card-tags">
+            <span class="chip">Flask</span>
+            <span class="chip">Python</span>
+            <span class="chip">Machine learning</span>
+            <span class="chip">Risk modeling</span>
+          </div>
+          <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="ml ai">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-route"></i></div>
+          <h3 class="card-title">Ma3 Transport AI</h3>
+          <p class="card-text">Urban transport intelligence project that combines route logic, fare estimation, and contextual analytics to improve commuter decision-making and trip planning confidence.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">Flask</span>
+            <span class="chip">APIs</span>
+            <span class="chip">Optimization logic</span>
+          </div>
+          <a href="https://github.com/chegeMP/Ma3" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="dashboard analytics">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
+          <h3 class="card-title">Executive KPI Dashboard</h3>
+          <p class="card-text">Executive-ready dashboard tracking revenue, product mix, and operational trends across business units with drill-down views for month-over-month performance diagnostics.</p>
+          <div class="card-tags">
+            <span class="chip">Power BI</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Data visualization</span>
+            <span class="chip">Executive reporting</span>
+          </div>
+          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="dashboard ml ai">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-chart-bar"></i></div>
+          <h3 class="card-title">ML Monitoring Dashboard</h3>
+          <p class="card-text">Model monitoring interface for tracking drift, confidence behavior, precision-recall movement, and performance stability after deployment across time windows.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">Model metrics</span>
+            <span class="chip">Dashboarding</span>
+            <span class="chip">Drift analysis</span>
+          </div>
+          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+        </article>
       </div>
+    </section>
 
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fas fa-tools"></i>
-        </div>
-        <h3 class="skill-title">DevOps & Tools</h3>
-        <ul class="skill-list">
-          <li>Docker & Containerization</li>
-          <li>Git & Version Control</li>
-          <li>CI/CD Pipelines</li>
-          <li>Monitoring & Logging</li>
-        </ul>
+    <section id="dashboards" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Dashboard Gallery</h2>
+        <p class="section-sub">Business intelligence and analytics dashboards focused on KPI monitoring, trend interpretation, and stakeholder-friendly decision support.</p>
+      </header>
+      <div class="gallery-grid">
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-01.png" alt="Vehicle sales dashboard showing KPI cards and multi-chart layout for trend exploration." loading="lazy">
+          <figcaption class="gallery-caption">Vehicle sales BI dashboard combining KPI cards, yearly trend lines, and segment comparisons to monitor product performance and revenue behavior by category.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-04.png" alt="Department-level dashboard with donut charts for employee and support distributions." loading="lazy">
+          <figcaption class="gallery-caption">Workforce operations dashboard visualizing department composition and support-ticket distribution to identify staffing balance and response pressure points.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-05.png" alt="Power BI dashboard for automotive metrics including price, engine size, and transmission mix." loading="lazy">
+          <figcaption class="gallery-caption">Automotive analytics dashboard with trend, composition, and comparative views for model pricing, transmission behavior, and brand-level performance shifts.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-06.png" alt="Video game sales dashboard with top games table, publisher donut, and console treemap." loading="lazy">
+          <figcaption class="gallery-caption">Video game market dashboard combining title rankings, publisher share, and console contribution analysis to explain global sales concentration patterns.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-09.png" alt="Power BI dashboard for product distribution and shipment trends across countries." loading="lazy">
+          <figcaption class="gallery-caption">Distribution operations dashboard tracking shipment volume, monthly demand movement, and product-country contributions for supply planning alignment.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-12.png" alt="Minet dashboard with usage by age, service calls, and churn by contract type." loading="lazy">
+          <figcaption class="gallery-caption">Telecom usage and churn dashboard combining behavioral usage trends, service-call frequency, and contract-level churn concentration signals.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-13.png" alt="Insurance pricing dashboard with regional distribution, smoker segmentation, and age trends." loading="lazy">
+          <figcaption class="gallery-caption">Insurance cost analysis dashboard visualizing risk proxies and premium patterns across age, regional, and behavioral segmentation dimensions.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-14.png" alt="Automotive market dashboard showing sales volume by fuel type, model mix, and regional trends." loading="lazy">
+          <figcaption class="gallery-caption">Automotive market intelligence dashboard focused on sales volume, fuel-type mix, and regional trend behavior over sequential reporting periods.</figcaption>
+        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section fade-in">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="section-divider"></div>
-    
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-seedling"></i>
-          </div>
-          <h3 class="project-title">Farmfresh</h3>
-          <p class="project-description">
-            A revolutionary platform connecting farmers directly with consumers, eliminating middlemen and ensuring fair pricing for agricultural products.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Laravel</span>
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">MySQL</span>
-          </div>
-          <a href="https://github.com/chegeMP/Farmfresh_1" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
-        </div>
+    <section id="performance" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Model Performance Graphs</h2>
+        <p class="section-sub">Validation and explainability visuals used to assess model quality, confidence reliability, calibration behavior, and predictor influence.</p>
+      </header>
+      <div class="gallery-grid">
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-02.png" alt="Model training curves with loss, AUC, and accuracy for train and validation sets." loading="lazy">
+          <figcaption class="gallery-caption">Learning diagnostics tracking train-validation loss, AUC, and accuracy across epochs to detect overfitting risk and convergence stability.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-03.png" alt="Horizontal bar chart ranking top features by model importance." loading="lazy">
+          <figcaption class="gallery-caption">Feature importance ranking used to explain model behavior, prioritize high-impact variables, and guide targeted feature refinement cycles.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-08.png" alt="Feature importance chart with labeled predictors and model contribution scores." loading="lazy">
+          <figcaption class="gallery-caption">Customer-risk feature contribution chart supporting model explainability and helping identify intervention levers for retention actions.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-10.png" alt="Calibration curve comparing predicted probabilities with actual positive rate." loading="lazy">
+          <figcaption class="gallery-caption">Probability calibration analysis comparing predicted confidence against observed outcomes to improve threshold policy and deployment reliability.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-11.png" alt="Feature importance chart highlighting churn predictors by importance score." loading="lazy">
+          <figcaption class="gallery-caption">Churn model explainability output highlighting dominant predictors and helping prioritize retention strategy at-risk cohort design.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-07.png" alt="SQL query editor view showing user authentication plugin inspection in MySQL." loading="lazy">
+          <figcaption class="gallery-caption">SQL validation snapshot supporting schema checks, extraction sanity testing, and data-quality assurance before model training and reporting pipelines.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-15.png" alt="XGBoost model performance summary showing accuracy, F1 score, and ROC AUC values." loading="lazy">
+          <figcaption class="gallery-caption">XGBoost training summary highlighting strong classification performance with reported accuracy, F1 score, and ROC-AUC for model benchmarking.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-16.png" alt="Cross-validation logs with fold-level AUC and F1 scores for XGBoost and neural network models." loading="lazy">
+          <figcaption class="gallery-caption">Cross-validation training logs showing fold-level AUC and F1 behavior for neural network and XGBoost candidates during robust model comparison.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-17.png" alt="Neural network training log showing final accuracy, F1 score, and ROC AUC with model artifact persistence." loading="lazy">
+          <figcaption class="gallery-caption">Neural network run summary with final metrics and saved artifacts, documenting reproducible experiment outputs and model persistence workflow.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-18.png" alt="Model selection and persistence log showing best model choice and pipeline completion details." loading="lazy">
+          <figcaption class="gallery-caption">Model selection and persistence checkpoint recording the selected best model, comparative scoring, and end-to-end pipeline completion metadata.</figcaption>
+        </figure>
       </div>
+    </section>
 
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3 class="project-title">Insurance Cost Predictor</h3>
-          <p class="project-description">
-            AI-powered insurance pricing prediction system using advanced machine learning algorithms for accurate cost estimation and risk assessment.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Machine Learning</span>
-          </div>
-          <a href="https://github.com/chegeMP/Insurance-Cost-Predictor1" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
+    <section id="contact" class="section-block fade-in">
+      <header class="section-head">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-sub">Share your project details and I will get back to you to discuss data science, AI, and machine learning solutions.</p>
+      </header>
+      <div class="contact-panel surface-card">
+        <form class="contact-form" action="mailto:chegemark582@gmail.com" method="post" enctype="text/plain">
+          <label class="contact-label" for="contact-name">Full name</label>
+          <input class="contact-input" type="text" id="contact-name" name="name" autocomplete="name" required>
+
+          <label class="contact-label" for="contact-email">Email address</label>
+          <input class="contact-input" type="email" id="contact-email" name="email" autocomplete="email" required>
+
+          <label class="contact-label" for="contact-subject">Subject</label>
+          <input class="contact-input" type="text" id="contact-subject" name="subject" placeholder="Project inquiry" required>
+
+          <label class="contact-label" for="contact-message">Message</label>
+          <textarea class="contact-input contact-textarea" id="contact-message" name="message" rows="5" placeholder="Tell me about your project goals, timeline, and data challenges." required></textarea>
+
+          <button type="submit" class="btn btn-solid contact-submit">Send message</button>
+        </form>
+        <div class="hero-social contact-social">
+          <a href="https://www.linkedin.com/in/markchege4401/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/chegeMP" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
+        <p class="contact-meta">Nairobi, Kenya · Remote &amp; on-site</p>
       </div>
+    </section>
+  </main>
 
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-route"></i>
-          </div>
-          <h3 class="project-title">Ma3 Transport AI</h3>
-          <p class="project-description">
-            Intelligent public transport optimization system providing best routes and real-time fare information for seamless urban mobility.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">APIs</span>
-          </div>
-          <a href="https://github.com/chegeMP/Ma3" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-gamepad"></i>
-          </div>
-          <h3 class="project-title">Aviator Crash Game</h3>
-          <p class="project-description">
-            Real-time multiplayer betting game with sophisticated crash prediction algorithms and live multiplier tracking system.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">WebSocket</span>
-          </div>
-          <a href="https://github.com/chegeMP/Aviator-Crash-game" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-car"></i>
-          </div>
-          <h3 class="project-title">Imports by Wam</h3>
-          <p class="project-description">
-            Comprehensive car marketplace mobile application with integrated importer connections and advanced inventory management features.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Kotlin</span>
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">Spring Boot</span>
-          </div>
-          <a href="#" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas fa-heartbeat"></i>
-          </div>
-          <h3 class="project-title">Health Management App</h3>
-          <p class="project-description">
-            Comprehensive health platform connecting users with healthcare providers and personalized wellness programs for better health outcomes.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">MySQL</span>
-          </div>
-          <a href="#" class="project-link">
-            <i class="fab fa-github"></i> View Project
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section fade-in">
-    <h2 class="section-title">Let's Build Something Amazing</h2>
-    <div class="section-divider"></div>
-    
-    <div class="contact-content">
-      <p class="contact-description">
-        Ready to collaborate on your next project? I'm always excited to work on innovative solutions that make a difference!
-      </p>
-      
-      <div class="contact-links">
-        <a href="mailto:chegemark582@gmail.com" class="contact-email">
-          <i class="fas fa-envelope"></i> chegemark582@gmail.com
-        </a>
-        
-        <div class="social-links">
-          <a href="https://github.com/chegeMP" class="social-link">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/markchege4401/" class="social-link">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </div>
-      
-      <p class="contact-location">
-        📍 Nairobi, Kenya | Available for remote and on-site opportunities
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 MarkPaul Chege. Crafted with ❤️ and lots of ☕</p>
+  <footer class="site-footer">
+    <p>© 2026 MarkPaul Chege</p>
   </footer>
 
-  <script>
-    // Create floating particles
-    function createParticles() {
-      const particlesContainer = document.querySelector('.particles');
-      const particleCount = 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        particlesContainer.appendChild(particle);
-      }
-    }
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
-    // Typewriter effect
-    const phrases = [
-      "Systems Engineer",
-      "Backend Developer", 
-      "Cloud Architect",
-      "DevOps Engineer",
-      "Problem Solver"
-    ];
-    
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typewriterElement = document.querySelector('.typewriter');
-    
-    function typeWriter() {
-      const currentPhrase = phrases[phraseIndex];
-      
-      if (isDeleting) {
-        typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
+  <script>
+    (function () {
+      const header = document.querySelector('.site-header');
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+      const sections = document.querySelectorAll('main section[id]');
+      const toggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+      const backToTop = document.getElementById('back-to-top');
+      const filterButtons = document.querySelectorAll('[data-project-filter]');
+      const projectCards = document.querySelectorAll('[data-project-tags]');
+
+      function setActiveNav() {
+        let current = 'home';
+        const y = window.scrollY + 120;
+        sections.forEach(function (sec) {
+          const top = sec.offsetTop;
+          const h = sec.offsetHeight;
+          if (y >= top && y < top + h) current = sec.id;
+        });
+        navLinks.forEach(function (a) {
+          const on = a.getAttribute('href') === '#' + current;
+          a.classList.toggle('is-active', on);
+        });
       }
-      
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        setTimeout(() => isDeleting = true, 2000);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-      }
-      
-      const speed = isDeleting ? 50 : 100;
-      setTimeout(typeWriter, speed);
-    }
-    
-    // Scroll progress indicator
-    function updateScrollProgress() {
-      const scrollProgress = document.querySelector('.scroll-progress');
-      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
-    }
-    
-    // Navbar scroll effect
-    function updateNavbar() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    }
-    
-    // Fade in animation on scroll
-    function handleScrollAnimation() {
-      const elements = document.querySelectorAll('.fade-in');
-      
-      elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('visible');
-        }
-      });
-    }
-    
-    // Smooth scrolling for navigation links
-    function initSmoothScrolling() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const id = this.getAttribute('href');
+          if (id.length < 2) return;
+          const target = document.querySelector(id);
           if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (mobileNav && !mobileNav.hidden) {
+              mobileNav.hidden = true;
+              toggle.setAttribute('aria-expanded', 'false');
+            }
           }
         });
       });
-    }
-    
-    // Parallax effect for hero section
-    function handleParallax() {
-      const scrolled = window.pageYOffset;
-      const hero = document.querySelector('.hero');
-      const heroContent = document.querySelector('.hero-content');
-      
-      if (hero && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+
+      if (toggle && mobileNav) {
+        toggle.addEventListener('click', function () {
+          const open = mobileNav.hidden;
+          mobileNav.hidden = !open;
+          toggle.setAttribute('aria-expanded', String(open));
+        });
       }
-    }
-    
-    // Initialize everything
-    function init() {
-      createParticles();
-      setTimeout(typeWriter, 1000);
-      initSmoothScrolling();
-      
-      // Initial check for fade-in elements
-      handleScrollAnimation();
-      
-      // Event listeners
-      window.addEventListener('scroll', () => {
-        updateScrollProgress();
-        updateNavbar();
-        handleScrollAnimation();
-        handleParallax();
+
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (mobileNav) mobileNav.hidden = true;
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        });
       });
-      
-      window.addEventListener('load', () => {
+
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 24);
+        setActiveNav();
+        if (backToTop) {
+          const show = window.scrollY > 400;
+          backToTop.hidden = !show;
+        }
+      }
+
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      function setProjectFilter(filter) {
+        filterButtons.forEach(function (btn) {
+          btn.classList.toggle('is-active', btn.getAttribute('data-project-filter') === filter);
+        });
+        projectCards.forEach(function (card) {
+          const tags = (card.getAttribute('data-project-tags') || '').split(/\s+/).filter(Boolean);
+          let show = true;
+          if (filter === 'ml') show = tags.indexOf('ml') !== -1;
+          else if (filter === 'ai') show = tags.indexOf('ai') !== -1;
+          else if (filter === 'dashboard') show = tags.indexOf('dashboard') !== -1;
+          card.hidden = !show;
+          card.setAttribute('aria-hidden', show ? 'false' : 'true');
+        });
+      }
+
+      filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const f = btn.getAttribute('data-project-filter') || 'all';
+          setProjectFilter(f);
+        });
+      });
+
+      function fadeOnScroll() {
+        document.querySelectorAll('.fade-in').forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', function () {
+        onScroll();
+        fadeOnScroll();
+      });
+      window.addEventListener('load', function () {
+        onScroll();
+        fadeOnScroll();
         document.body.classList.add('loaded');
       });
-    }
-    
-    // Start when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+      if (document.readyState !== 'loading') {
+        setActiveNav();
+        fadeOnScroll();
+      }
+    })();
   </script>
 </body>
 </html>
