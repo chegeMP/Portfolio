@@ -48,19 +48,26 @@
 
   <main id="main">
     <section id="home" class="hero section-block">
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-monitor"></div>
+        <div class="visual-laptop"></div>
+        <div class="visual-keyboard"></div>
+        <div class="visual-mouse"></div>
+        <div class="visual-lamp"></div>
+      </div>
       <div class="hero-layout">
-        <p class="eyebrow">I am MarkPaul Chege</p>
-        <h1 class="hero-title">Data Science, <span class="hero-title-accent">AI</span> &amp; Machine Learning</h1>
+        <p class="eyebrow">Data Scientist</p>
+        <h1 class="hero-title">MarkPaul <span class="hero-title-accent">Chege</span></h1>
         <p class="hero-lead">
-          I build end-to-end data workflows from exploratory analysis and reproducible modeling to AI-powered insights, prediction systems, and dashboard-ready decision support.
+          AI and Machine Learning specialist building predictive models, ETL pipelines, and analytics dashboards for business decision support.
         </p>
         <ul class="hero-highlights" aria-label="Focus areas">
           <li>Predictive modeling &amp; evaluation</li>
-          <li>Data pipelines &amp; experimentation</li>
+          <li>ETL pipelines &amp; data preparation</li>
           <li>Interactive dashboards &amp; reporting</li>
         </ul>
         <div class="hero-actions">
-          <a href="mailto:chegemark582@gmail.com?subject=CV%20request" class="btn btn-solid">Download CV</a>
+          <a href="assets/Markpaul_Chege_CV.pdf" class="btn btn-solid" download>Download CV</a>
           <a href="#projects" class="btn btn-outline">See projects</a>
         </div>
         <div class="hero-social">
@@ -256,10 +263,11 @@
         <article class="surface-card project-card" data-project-tags="ml ai">
           <div class="project-icon" aria-hidden="true"><i class="fas fa-user-minus"></i></div>
           <h3 class="card-title">Customer Churn Prediction Model</h3>
-          <p class="card-text">End-to-end churn prediction workflow using feature engineering, class balancing, and model comparison (Neural Network vs XGBoost) to identify high-risk customers and support retention strategy.</p>
+          <p class="card-text">Neural network-based churn prediction workflow using feature engineering, class balancing, and rigorous evaluation to identify high-risk customers and support retention strategy decisions.</p>
+          <p class="card-text"><strong>Results:</strong> Accuracy 0.8935, F1 Score 0.8443, ROC-AUC 0.9670.</p>
           <div class="card-tags">
             <span class="chip">Python</span>
-            <span class="chip">XGBoost</span>
+            <span class="chip">TensorFlow / Keras</span>
             <span class="chip">Neural network</span>
             <span class="chip">ROC-AUC / F1</span>
           </div>
@@ -402,6 +410,22 @@
         <figure class="surface-card gallery-card">
           <img src="assets/gallery/dashboard-18.png" alt="Model selection and persistence log showing best model choice and pipeline completion details." loading="lazy">
           <figcaption class="gallery-caption">Model selection and persistence checkpoint recording the selected best model, comparative scoring, and end-to-end pipeline completion metadata.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-19.png" alt="Python ETL code snippet showing schema loading, asset integrity checks, and prepared data class definition." loading="lazy">
+          <figcaption class="gallery-caption">ETL pipeline implementation snippet demonstrating schema loading, artifact integrity verification, and structured prepared-data output for downstream model consumption.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-20.png" alt="Data transformation code snippet showing missing-value filling, numeric coercion, and scaling before model inference." loading="lazy">
+          <figcaption class="gallery-caption">Transformation-stage code handling missing values, numeric coercion, infinity cleanup, and scaling logic to produce consistent model-ready feature matrices.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-21.png" alt="ETL pipeline documentation snippet describing supported input formats, auto-detection, and command-line usage examples." loading="lazy">
+          <figcaption class="gallery-caption">Pipeline documentation snippet outlining supported input formats, auto-detection rules, CLI usage, and standardized outputs for reproducible ETL execution.</figcaption>
+        </figure>
+        <figure class="surface-card gallery-card">
+          <img src="assets/gallery/dashboard-22.png" alt="Neural network training utility function plotting loss, AUC, and accuracy history with matplotlib subplots." loading="lazy">
+          <figcaption class="gallery-caption">Neural network training utility function for plotting loss, AUC, and accuracy history to support consistent model diagnostics and performance reporting.</figcaption>
         </figure>
       </div>
     </section>
