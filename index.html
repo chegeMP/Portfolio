@@ -59,7 +59,7 @@
         <p class="eyebrow">Data Scientist</p>
         <h1 class="hero-title">MarkPaul <span class="hero-title-accent">Chege</span></h1>
         <p class="hero-lead">
-          AI and Machine Learning specialist building predictive models, ETL pipelines, and analytics dashboards for business decision support.
+          AI and Machine Learning specialist building <span class="hero-dynamic" id="hero-dynamic-role" aria-live="polite">predictive models</span>, ETL pipelines, and analytics dashboards for business decision support.
         </p>
         <ul class="hero-highlights" aria-label="Focus areas">
           <li>Predictive modeling &amp; evaluation</li>
@@ -67,8 +67,8 @@
           <li>Interactive dashboards &amp; reporting</li>
         </ul>
         <div class="hero-actions">
-          <a href="assets/Markpaul_Chege_CV.pdf" class="btn btn-solid" download>Download CV</a>
-          <a href="#projects" class="btn btn-outline">See projects</a>
+          <a href="assets/Markpaul_Chege_CV.pdf" class="btn btn-solid hero-cta-primary" download>Download CV</a>
+          <a href="#projects" class="btn btn-outline hero-cta-secondary">See projects</a>
         </div>
         <div class="hero-social">
           <a href="https://www.linkedin.com/in/markchege4401/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -436,20 +436,35 @@
         <p class="section-sub">Share your project details and I will get back to you to discuss data science, AI, and machine learning solutions.</p>
       </header>
       <div class="contact-panel surface-card">
-        <form class="contact-form" action="mailto:chegemark582@gmail.com" method="post" enctype="text/plain">
-          <label class="contact-label" for="contact-name">Full name</label>
-          <input class="contact-input" type="text" id="contact-name" name="name" autocomplete="name" required>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-name">Full name</label>
+            <input class="contact-input" type="text" id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="60">
+            <p class="contact-error" id="contact-name-error" aria-live="polite"></p>
+          </div>
 
-          <label class="contact-label" for="contact-email">Email address</label>
-          <input class="contact-input" type="email" id="contact-email" name="email" autocomplete="email" required>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-email">Email address</label>
+            <input class="contact-input" type="email" id="contact-email" name="email" autocomplete="email" required maxlength="120">
+            <p class="contact-error" id="contact-email-error" aria-live="polite"></p>
+          </div>
 
-          <label class="contact-label" for="contact-subject">Subject</label>
-          <input class="contact-input" type="text" id="contact-subject" name="subject" placeholder="Project inquiry" required>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-subject">Subject</label>
+            <input class="contact-input" type="text" id="contact-subject" name="subject" placeholder="Project inquiry" required minlength="3" maxlength="100">
+            <p class="contact-error" id="contact-subject-error" aria-live="polite"></p>
+          </div>
 
-          <label class="contact-label" for="contact-message">Message</label>
-          <textarea class="contact-input contact-textarea" id="contact-message" name="message" rows="5" placeholder="Tell me about your project goals, timeline, and data challenges." required></textarea>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-message">Message</label>
+            <textarea class="contact-input contact-textarea" id="contact-message" name="message" rows="5" placeholder="Tell me about your project goals, timeline, and data challenges." required minlength="20" maxlength="1200"></textarea>
+            <p class="contact-error" id="contact-message-error" aria-live="polite"></p>
+          </div>
 
-          <button type="submit" class="btn btn-solid contact-submit">Send message</button>
+          <button type="submit" class="btn btn-solid contact-submit" id="contact-submit">
+            <span class="submit-label">Send message</span>
+          </button>
+          <p class="contact-status" id="contact-status" aria-live="polite"></p>
         </form>
         <div class="hero-social contact-social">
           <a href="https://www.linkedin.com/in/markchege4401/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -468,10 +483,29 @@
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
 
+  <div class="lightbox" id="gallery-lightbox" hidden aria-hidden="true">
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Performance image preview">
+      <button type="button" class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Close preview">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="lightbox-btn lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-image" src="" alt="">
+        <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+      </figure>
+      <button type="button" class="lightbox-btn lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
   <script>
     (function () {
       const header = document.querySelector('.site-header');
-      const navLinks = document.querySelectorAll('[data-nav-link]');
+      const navHashLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav-links a[href^="#"]');
       const sections = document.querySelectorAll('main section[id]');
       const toggle = document.querySelector('.nav-toggle');
       const mobileNav = document.getElementById('mobile-nav');
@@ -479,18 +513,30 @@
       const backToTop = document.getElementById('back-to-top');
       const filterButtons = document.querySelectorAll('[data-project-filter]');
       const projectCards = document.querySelectorAll('[data-project-tags]');
+      const contactForm = document.getElementById('contact-form');
+      const contactSubmit = document.getElementById('contact-submit');
+      const contactStatus = document.getElementById('contact-status');
+      const heroDynamicRole = document.getElementById('hero-dynamic-role');
+      const heroCtaButtons = document.querySelectorAll('.hero-actions .btn');
+      const performanceGalleryImages = document.querySelectorAll('#performance .gallery-card img');
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const lightboxPrev = document.getElementById('lightbox-prev');
+      const lightboxNext = document.getElementById('lightbox-next');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let currentSectionId = 'home';
+      let lightboxItems = [];
+      let lightboxIndex = 0;
 
-      function setActiveNav() {
-        let current = 'home';
-        const y = window.scrollY + 120;
-        sections.forEach(function (sec) {
-          const top = sec.offsetTop;
-          const h = sec.offsetHeight;
-          if (y >= top && y < top + h) current = sec.id;
-        });
-        navLinks.forEach(function (a) {
-          const on = a.getAttribute('href') === '#' + current;
-          a.classList.toggle('is-active', on);
+      function setActiveNav(id) {
+        if (!id) return;
+        currentSectionId = id;
+        navHashLinks.forEach(function (a) {
+          const isActive = a.getAttribute('href') === '#' + id;
+          a.classList.toggle('is-active', isActive);
+          a.setAttribute('aria-current', isActive ? 'page' : 'false');
         });
       }
 
@@ -501,7 +547,20 @@
           const target = document.querySelector(id);
           if (target) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (!reduceMotion) {
+              target.classList.remove('section-focus');
+              window.requestAnimationFrame(function () {
+                target.classList.add('section-focus');
+              });
+              window.setTimeout(function () {
+                target.classList.remove('section-focus');
+              }, 620);
+            }
+            target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, '', id);
+            }
+            setActiveNav(id.slice(1));
             if (mobileNav && !mobileNav.hidden) {
               mobileNav.hidden = true;
               toggle.setAttribute('aria-expanded', 'false');
@@ -527,7 +586,7 @@
 
       function onScroll() {
         header.classList.toggle('is-scrolled', window.scrollY > 24);
-        setActiveNav();
+        setActiveNav(currentSectionId);
         if (backToTop) {
           const show = window.scrollY > 400;
           backToTop.hidden = !show;
@@ -562,6 +621,230 @@
         });
       });
 
+      function getErrorText(input) {
+        const value = input.value.trim();
+        if (!value) return 'This field is required.';
+
+        if (input.name === 'name') {
+          if (value.length < 2) return 'Please enter at least 2 characters.';
+          if (!/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(value)) return 'Use letters, spaces, apostrophes, dots, or hyphens only.';
+        }
+
+        if (input.name === 'email') {
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address.';
+        }
+
+        if (input.name === 'subject') {
+          if (value.length < 3) return 'Subject should be at least 3 characters.';
+        }
+
+        if (input.name === 'message') {
+          if (value.length < 20) return 'Message should be at least 20 characters.';
+        }
+
+        return '';
+      }
+
+      function setFieldError(input, message) {
+        const errorNode = document.getElementById('contact-' + input.name + '-error');
+        input.classList.toggle('is-invalid', Boolean(message));
+        input.setAttribute('aria-invalid', message ? 'true' : 'false');
+        if (errorNode) errorNode.textContent = message || '';
+      }
+
+      function validateField(input) {
+        const message = getErrorText(input);
+        setFieldError(input, message);
+        return !message;
+      }
+
+      function setContactStatus(message, state) {
+        if (!contactStatus) return;
+        contactStatus.textContent = message;
+        contactStatus.classList.remove('is-success', 'is-error');
+        if (state) contactStatus.classList.add(state);
+      }
+
+      if (contactForm) {
+        const fields = contactForm.querySelectorAll('.contact-input');
+
+        fields.forEach(function (input) {
+          input.addEventListener('blur', function () {
+            validateField(input);
+          });
+          input.addEventListener('input', function () {
+            if (input.classList.contains('is-invalid')) validateField(input);
+          });
+        });
+
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          setContactStatus('', '');
+
+          let isFormValid = true;
+          fields.forEach(function (input) {
+            if (!validateField(input)) isFormValid = false;
+          });
+
+          if (!isFormValid) {
+            setContactStatus('Please fix the highlighted fields and try again.', 'is-error');
+            return;
+          }
+
+          if (contactSubmit) {
+            contactSubmit.disabled = true;
+            contactSubmit.classList.add('is-loading');
+          }
+
+          const data = new FormData(contactForm);
+          const subject = encodeURIComponent(data.get('subject') || 'Portfolio inquiry');
+          const body = encodeURIComponent(
+            'Name: ' + (data.get('name') || '') + '\n' +
+            'Email: ' + (data.get('email') || '') + '\n\n' +
+            (data.get('message') || '')
+          );
+
+          setTimeout(function () {
+            window.location.href = 'mailto:chegemark582@gmail.com?subject=' + subject + '&body=' + body;
+            setContactStatus('Thanks! Your email app should open now. If not, contact me directly at chegemark582@gmail.com.', 'is-success');
+            contactForm.reset();
+            fields.forEach(function (input) {
+              setFieldError(input, '');
+            });
+            if (contactSubmit) {
+              contactSubmit.disabled = false;
+              contactSubmit.classList.remove('is-loading');
+            }
+          }, 500);
+        });
+      }
+
+      function initHeroEnhancements() {
+        if (heroCtaButtons.length) {
+          heroCtaButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              btn.classList.remove('is-pressed');
+              window.requestAnimationFrame(function () {
+                btn.classList.add('is-pressed');
+              });
+              window.setTimeout(function () {
+                btn.classList.remove('is-pressed');
+              }, 220);
+            });
+          });
+        }
+
+        if (!heroDynamicRole) return;
+        const rolePhrases = [
+          'predictive models',
+          'forecasting systems',
+          'insight dashboards',
+          'production ETL workflows'
+        ];
+        let roleIndex = 0;
+        if (reduceMotion) return;
+
+        function rotateRole() {
+          heroDynamicRole.classList.remove('is-visible');
+          window.setTimeout(function () {
+            roleIndex = (roleIndex + 1) % rolePhrases.length;
+            heroDynamicRole.textContent = rolePhrases[roleIndex];
+            heroDynamicRole.classList.add('is-visible');
+          }, 180);
+        }
+
+        heroDynamicRole.classList.add('is-visible');
+        window.setInterval(rotateRole, 2600);
+      }
+
+      function updateLightbox() {
+        if (!lightboxItems.length || !lightboxImage || !lightboxCaption) return;
+        const item = lightboxItems[lightboxIndex];
+        lightboxImage.src = item.src;
+        lightboxImage.alt = item.alt;
+        lightboxCaption.textContent = item.caption;
+      }
+
+      function openLightbox(index) {
+        if (!lightbox || !lightboxItems.length) return;
+        lightboxIndex = index;
+        updateLightbox();
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('has-lightbox-open');
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('has-lightbox-open');
+      }
+
+      function navigateLightbox(step) {
+        if (!lightboxItems.length) return;
+        lightboxIndex = (lightboxIndex + step + lightboxItems.length) % lightboxItems.length;
+        updateLightbox();
+      }
+
+      function initPerformanceLightbox() {
+        if (!performanceGalleryImages.length || !lightbox) return;
+
+        lightboxItems = Array.from(performanceGalleryImages).map(function (img) {
+          const figure = img.closest('figure');
+          const captionNode = figure ? figure.querySelector('.gallery-caption') : null;
+          return {
+            src: img.getAttribute('src') || '',
+            alt: img.getAttribute('alt') || 'Portfolio image',
+            caption: captionNode ? captionNode.textContent.trim() : ''
+          };
+        });
+
+        performanceGalleryImages.forEach(function (img, index) {
+          img.classList.add('is-zoomable');
+          img.setAttribute('tabindex', '0');
+          img.setAttribute('role', 'button');
+          img.setAttribute('aria-label', 'Open image preview');
+          img.addEventListener('click', function () {
+            openLightbox(index);
+          });
+          img.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openLightbox(index);
+            }
+          });
+        });
+
+        lightbox.addEventListener('click', function (event) {
+          if (event.target.matches('[data-lightbox-close]')) closeLightbox();
+        });
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', function () { navigateLightbox(-1); });
+        if (lightboxNext) lightboxNext.addEventListener('click', function () { navigateLightbox(1); });
+      }
+
+      if (sections.length) {
+        const navObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActiveNav(entry.target.id);
+            }
+          });
+        }, { rootMargin: '-35% 0px -45% 0px', threshold: 0.1 });
+
+        sections.forEach(function (section) {
+          navObserver.observe(section);
+        });
+      }
+
+      document.addEventListener('keydown', function (event) {
+        if (!lightbox || lightbox.hidden) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') navigateLightbox(-1);
+        if (event.key === 'ArrowRight') navigateLightbox(1);
+      });
+
       function fadeOnScroll() {
         document.querySelectorAll('.fade-in').forEach(function (el) {
           if (el.getBoundingClientRect().top < window.innerHeight - 80) {
@@ -577,11 +860,17 @@
       window.addEventListener('load', function () {
         onScroll();
         fadeOnScroll();
+        initHeroEnhancements();
+        initPerformanceLightbox();
         document.body.classList.add('loaded');
       });
       if (document.readyState !== 'loading') {
-        setActiveNav();
+        const hashId = window.location.hash ? window.location.hash.slice(1) : 'home';
+        if (document.getElementById(hashId)) setActiveNav(hashId);
+        else setActiveNav('home');
         fadeOnScroll();
+        initHeroEnhancements();
+        initPerformanceLightbox();
       }
     })();
   </script>

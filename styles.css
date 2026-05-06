@@ -233,6 +233,12 @@ strong {
   background: var(--surface-hover);
 }
 
+.mobile-nav-links a.is-active {
+  color: var(--text);
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -247,7 +253,7 @@ strong {
   cursor: pointer;
   border: none;
   font-family: inherit;
-  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
 }
 
 .btn-solid {
@@ -259,6 +265,7 @@ strong {
 .btn-solid:hover {
   background: #3a3a3a;
   border-color: #4a4a4a;
+  transform: translateY(-1px);
 }
 
 .btn-outline {
@@ -270,6 +277,7 @@ strong {
 .btn-outline:hover {
   border-color: #525252;
   background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
 }
 
 /* Layout blocks */
@@ -416,6 +424,20 @@ strong {
   margin-bottom: 1rem;
 }
 
+.hero-dynamic {
+  display: inline-block;
+  font-weight: 700;
+  color: #b7dfff;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
+}
+
+.hero-dynamic.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero-highlights {
   list-style: none;
   display: flex;
@@ -440,6 +462,19 @@ strong {
   gap: 0.75rem;
 }
 
+.hero-cta-primary {
+  box-shadow: 0 10px 28px rgba(34, 102, 152, 0.28);
+  animation: heroPulse 2.8s ease-in-out infinite;
+}
+
+.hero-cta-secondary {
+  backdrop-filter: blur(1px);
+}
+
+.hero-actions .btn.is-pressed {
+  transform: scale(0.97);
+}
+
 .hero-social {
   display: flex;
   gap: 0.75rem;
@@ -462,6 +497,16 @@ strong {
   color: var(--text);
   border-color: #444;
   background: var(--surface-hover);
+}
+
+@keyframes heroPulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 28px rgba(34, 102, 152, 0.22);
+  }
+  50% {
+    box-shadow: 0 14px 36px rgba(34, 102, 152, 0.38);
+  }
 }
 
 /* Section typography */
@@ -748,10 +793,120 @@ strong {
   margin-bottom: 0.75rem;
 }
 
+.gallery-card img.is-zoomable {
+  cursor: zoom-in;
+  transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease);
+}
+
+.gallery-card img.is-zoomable:hover,
+.gallery-card img.is-zoomable:focus-visible {
+  transform: translateY(-2px);
+  border-color: #5f5f5f;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.38);
+  outline: none;
+}
+
 .gallery-caption {
   font-size: 0.86rem;
   color: var(--muted);
   line-height: 1.5;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 12, 0.84);
+  backdrop-filter: blur(2px);
+}
+
+.lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1120px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #090d13;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+  padding: 1.1rem 3.3rem;
+}
+
+.lightbox-figure {
+  margin: 0;
+}
+
+.lightbox-figure img {
+  width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #020406;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lightbox-caption {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.lightbox-btn {
+  position: absolute;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 12, 16, 0.88);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.18s var(--ease), background 0.18s var(--ease);
+}
+
+.lightbox-btn:hover {
+  background: rgba(16, 20, 26, 0.96);
+  transform: translateY(-1px);
+}
+
+.lightbox-close {
+  top: 0.65rem;
+  right: 0.65rem;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav:hover {
+  transform: translateY(calc(-50% - 1px));
+}
+
+.lightbox-prev {
+  left: 0.65rem;
+}
+
+.lightbox-next {
+  right: 0.65rem;
+}
+
+body.has-lightbox-open {
+  overflow: hidden;
 }
 
 .project-card .project-icon {
@@ -801,6 +956,11 @@ strong {
   gap: 0.7rem;
 }
 
+.contact-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .contact-label {
   font-size: 0.82rem;
   font-weight: 600;
@@ -832,6 +992,19 @@ strong {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
+.contact-input.is-invalid {
+  border-color: rgba(239, 68, 68, 0.85);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.contact-error {
+  min-height: 1rem;
+  margin: 0 0 0.2rem;
+  color: #f87171;
+  font-size: 0.78rem;
+  letter-spacing: 0.005em;
+}
+
 .contact-textarea {
   resize: vertical;
   min-height: 120px;
@@ -840,6 +1013,30 @@ strong {
 .contact-submit {
   justify-self: start;
   margin-top: 0.35rem;
+}
+
+.contact-submit:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.contact-submit.is-loading .submit-label::after {
+  content: " ...";
+}
+
+.contact-status {
+  min-height: 1.2rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.86rem;
+  color: var(--faint);
+}
+
+.contact-status.is-success {
+  color: #86efac;
+}
+
+.contact-status.is-error {
+  color: #fca5a5;
 }
 
 .contact-social {
@@ -870,6 +1067,22 @@ strong {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.section-focus {
+  animation: sectionFocusPulse 0.62s ease;
+}
+
+@keyframes sectionFocusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(120, 177, 224, 0);
+  }
+  42% {
+    box-shadow: 0 0 0 3px rgba(120, 177, 224, 0.32);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(120, 177, 224, 0);
+  }
 }
 
 /* Responsive */
@@ -947,5 +1160,29 @@ strong {
 
   .gallery-card img {
     height: 168px;
+  }
+
+  .lightbox-dialog {
+    padding: 0.9rem 2.8rem;
+  }
+
+  .lightbox-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-primary {
+    animation: none;
+  }
+
+  .section-focus {
+    animation: none;
+  }
+
+  .gallery-card img.is-zoomable,
+  .lightbox-btn {
+    transition: none;
   }
 }
