@@ -424,20 +424,6 @@ strong {
   margin-bottom: 1rem;
 }
 
-.hero-dynamic {
-  display: inline-block;
-  font-weight: 700;
-  color: #b7dfff;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
-}
-
-.hero-dynamic.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .hero-highlights {
   list-style: none;
   display: flex;
