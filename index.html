@@ -212,6 +212,9 @@
             <span class="chip">SQL</span>
             <span class="chip">PostgreSQL</span>
             <span class="chip">MySQL</span>
+            <span class="chip">Apache Hadoop</span>
+            <span class="chip">HDFS</span>
+            <span class="chip">MapReduce</span>
             <span class="chip">ETL-style workflows</span>
             <span class="chip">Dashboard data modeling</span>
             <span class="chip">Data warehousing concepts</span>
@@ -250,15 +253,15 @@
       <div class="projects-grid">
         <article class="surface-card project-card" data-project-tags="ai ml dashboard">
           <div class="project-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></div>
-          <h3 class="card-title">ETL Pipeline for Analytics &amp; ML</h3>
-          <p class="card-text">Production-style ETL workflow for extracting raw operational data, applying validation and transformations, and loading analysis-ready datasets for dashboards and machine learning tasks.</p>
+          <h3 class="card-title">ETL for Medicine Datasets</h3>
+          <p class="card-text">ETL pipeline for medicine datasets that ingests CSV files, validates and transforms records, and loads clean outputs for analytics and machine learning use cases.</p>
           <div class="card-tags">
             <span class="chip">Python</span>
-            <span class="chip">SQL</span>
+            <span class="chip">PostgreSQL</span>
             <span class="chip">ETL</span>
             <span class="chip">Data quality checks</span>
           </div>
-          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+          <a href="https://github.com/chegeMP/ETL-1-medicine" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fas fa-arrow-right"></i></a>
         </article>
         <article class="surface-card project-card" data-project-tags="ml ai">
           <div class="project-icon" aria-hidden="true"><i class="fas fa-user-minus"></i></div>
@@ -310,16 +313,28 @@
           <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
         </article>
         <article class="surface-card project-card" data-project-tags="dashboard ml ai">
-          <div class="project-icon" aria-hidden="true"><i class="fas fa-chart-bar"></i></div>
-          <h3 class="card-title">ML Monitoring Dashboard</h3>
-          <p class="card-text">Model monitoring interface for tracking drift, confidence behavior, precision-recall movement, and performance stability after deployment across time windows.</p>
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-gauge-high"></i></div>
+          <h3 class="card-title">Model Observability Toolkit</h3>
+          <p class="card-text">Reusable monitoring workflow focused on post-deployment model health checks, including confidence trend inspection, threshold movement tracking, and stability reporting for recurring evaluation cycles.</p>
           <div class="card-tags">
             <span class="chip">Python</span>
-            <span class="chip">Model metrics</span>
-            <span class="chip">Dashboarding</span>
-            <span class="chip">Drift analysis</span>
+            <span class="chip">Model observability</span>
+            <span class="chip">Evaluation workflow</span>
+            <span class="chip">Stability tracking</span>
           </div>
-          <a href="#" class="text-link is-disabled" aria-disabled="true">Case study soon</a>
+          <a href="https://github.com/chegeMP/Model-monitoring-dashboard" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="surface-card project-card" data-project-tags="dashboard ml ai">
+          <div class="project-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
+          <h3 class="card-title">Model Monitoring Dashboard (Streamlit)</h3>
+          <p class="card-text">Post-deployment monitoring dashboard that compares baseline and recent windows to detect data drift (PSI and Wasserstein), track calibration drift (Brier score), and monitor precision-recall and ROC-AUC stability.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">Plotly</span>
+            <span class="chip">Scikit-learn</span>
+          </div>
+          <a href="https://github.com/chegeMP/Model-monitoring-dashboard" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fas fa-arrow-right"></i></a>
         </article>
       </div>
     </section>
